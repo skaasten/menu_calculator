@@ -8,19 +8,16 @@ var appetizers = [
     { "name": "Gnocchi", "cost": 18}
 ];
 
-for (var i=0; i < appetizers.length; i++) {
-    var option = document.createElement("option");
-    option.setAttribute("value", appetizers[i].cost);
-    option.innerText= appetizers[i].name + ":" + appetizers[i].cost;
-    document.getElementsByName("appetizer")[0].appendChild(option);
-}
+["salads", "appetizers"].forEach(function(sectionName) {
+    section = eval(sectionName);
+    for (var i=0; i < section.length; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", section[i].cost);
+        option.innerText= section[i].name + ":" + section[i].cost;
+        document.getElementsByName(sectionName)[0].appendChild(option);
+    }
+});
 
-for (var i=0; i < salads.length; i++) {
-    option = document.createElement("option");
-    option.setAttribute("value", salads[i].cost);
-    option.innerText= salads[i].name + ":" + salads[i].cost;
-    document.getElementsByName("salad")[0].appendChild(option);
-}
 
 var entrees = [
     { "name": "Half Roasted Chicken", "cost": 42},
@@ -48,8 +45,8 @@ for (i=0; i < entrees.length; i++) {
 }
 
 function updateCost() {
-    var saladCost = Number.parseInt(document.getElementById("salad").value);
-    var appetizersCost = Number.parseInt(document.getElementById("appetizer").value);
+    var saladCost = Number.parseInt(document.getElementById("salads").value);
+    var appetizersCost = Number.parseInt(document.getElementById("appetizers").value);
 
     var totalEntreesCount = 0, totalEntreesCost = 0;
     for (i=0; i < entrees.length; i++) {
