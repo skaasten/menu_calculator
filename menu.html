@@ -6,17 +6,28 @@
 
 <h2>Make a menu</h2>
 
-<h3>Appetizers</h3>
-<select id="appetizer" name="appetizer" onchange="updateCost()">
-</select>
+<h3>Hot Appetizer</h3>
+<table>
+  <tr>
+    <td>
+      <select id="appetizer" name="appetizer" onchange="updateCost()">
+      </select>
+    </td>
+    <td> x <span id="appetizersCount"></span></td>
+  </tr>
+</table>
 
 <h3>Entrees</h3>
 <table id="entrees">
   <tr><th>Item</th><th>Cost</th><th>Orders</ht></tr>
 </table>
 
-<h2>Total:<span id="total"></span>
-
+<h2>Total
+<table>
+  <tr><td>Orders:</td><td id="totalOrders"></td></tr>
+  <tr><td>Cost:</td><td id="totalCost"></td></tr>
+  <tr><td>Cost Per Guest:</td><td id="costPerGuest"></td>
+</table>
 <script src="menu.js"></script>
 
 </body>

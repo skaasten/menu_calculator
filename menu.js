@@ -1,4 +1,5 @@
 var appetizers = [
+    { "name": "None", "cost": 0 },
     { "name": "Gnocchi", "cost": 18}
 ];
 
@@ -43,5 +44,8 @@ function updateCost() {
         totalEntreesCount += count;
     }
     var totalCost = totalEntreesCost + (appetizersCost * totalEntreesCount);
-    document.getElementById("total").innerText = totalCost;
+    document.getElementById("totalCost").innerText = totalCost;
+    document.getElementById("totalOrders").innerText = totalEntreesCount;
+    document.getElementById("appetizersCount").innerText = totalEntreesCount;
+    document.getElementById("costPerGuest").innerText = totalCost / totalEntreesCount;
 }
