@@ -17,15 +17,22 @@ var entrees = [
 ];
 
 for (i=0; i < entrees.length; i++) {
-    var entree = document.createElement("div");
-    entree.innerText = entrees[i].name + ":" + entrees[i].cost;
+    var row = document.createElement("tr");
+    var entree = document.createElement("td");
+    entree.innerText = entrees[i].name;
+    var entreeCost = document.createElement("td");
+    entreeCost.innerText = entrees[i].cost;
+    var entreeCount = document.createElement("td");
     var input = document.createElement("input");
     input.setAttribute("name", "entree-" + i);
     input.setAttribute("type", "number");
     input.setAttribute("value", 0);
     input.setAttribute("onchange", "updateCost()");
-    entree.appendChild(input);
-    document.getElementById("entrees").appendChild(entree);
+    entreeCount.appendChild(input);
+    row.appendChild(entree);
+    row.appendChild(entreeCost);
+    row.appendChild(entreeCount);
+    document.getElementById("entrees").appendChild(row);
 }
 
 function updateCost() {
