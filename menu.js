@@ -3,12 +3,18 @@ var salads = [
     { "name": "Traditional Greens", "cost": 12}
 ];
 
+var soups = [
+    { "name": "None", "cost": 0 },
+    { "name": "Butternut Squash", "cost": 11},
+    { "name": "Lobster Bisque", "cost": 12}
+];
+
 var appetizers = [
     { "name": "None", "cost": 0 },
     { "name": "Gnocchi", "cost": 18}
 ];
 
-["salads", "appetizers"].forEach(function(sectionName) {
+["salads", "soups", "appetizers"].forEach(function(sectionName) {
     section = eval(sectionName);
     for (var i=0; i < section.length; i++) {
         var option = document.createElement("option");
@@ -48,16 +54,18 @@ function updateCost() {
     var saladCost = Number.parseInt(document.getElementById("salads").value);
     var appetizersCost = Number.parseInt(document.getElementById("appetizers").value);
 
+    var soupsCost = Number.parseInt(document.getElementById("soups").value);
     var totalEntreesCount = 0, totalEntreesCost = 0;
     for (i=0; i < entrees.length; i++) {
         var count = Number.parseInt(document.getElementsByName("entree-" + i)[0].value);
         totalEntreesCost += count * entrees[i].cost;
         totalEntreesCount += count;
     }
-    var totalCost = totalEntreesCost + (appetizersCost * totalEntreesCount) + (saladCost * totalEntreesCount);
+    var totalCost = totalEntreesCost + (appetizersCost * totalEntreesCount) + (saladCost * totalEntreesCount) + (soupsCost * totalEntreesCount);
     document.getElementById("totalCost").innerText = totalCost;
-    document.getElementById("totalOrders").innerText = totalEntreesCount;
-    document.getElementById("saladCount").innerText = totalEntreesCount;
-    document.getElementById("appetizersCount").innerText = totalEntreesCount;
+
+    ["totalOrders", "saladCount", "appetizersCount", "soupsCount"].forEach(function(sectionName) {
+        document.getElementById(sectionName).innerText = totalEntreesCount;
+    });
     document.getElementById("costPerGuest").innerText = totalCost / totalEntreesCount;
 }
